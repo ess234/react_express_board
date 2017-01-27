@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as boardActions from '../../actions/boardActions';
+import BoardList from './BoardList';
 
 class About extends React.Component {
   constructor (props, context) {
@@ -13,26 +14,7 @@ class About extends React.Component {
 
     return (
       <div>
-        <table className="table table-hover table-striped">
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Title</th>
-              <th>Author</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {contents.map(content =>
-              <tr key={content.id}>
-                <td>{content.id}</td>
-                <td>{content.title}</td>
-                <td>{content.author}</td>
-                <td>{content.date}</td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+        <BoardList contents={contents}></BoardList>
       </div>
     );
   }
