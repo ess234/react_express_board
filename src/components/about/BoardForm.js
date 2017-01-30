@@ -29,7 +29,7 @@ const BoardForm = ({onChange, onSave, isEnabled, readContent, formTitle, buttonN
               defaultValue={readContent.content}
               disabled={isEnabled}></textarea>
           </div>
-          <input type="submit" value={buttonName} className="btn btn-success" onClick={onSave}/>
+          <input type="button" value={buttonName} className="btn btn-success" onClick={onSave}/>
       </form>
     </div>
   );

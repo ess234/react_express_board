@@ -36789,7 +36789,7 @@
 	  }, {
 	    key: 'callModify',
 	    value: function callModify() {
-	      this.setState({ formTitle: 'Update' });
+	      this.setState({ formTitle: 'update' });
 	    }
 	  }, {
 	    key: 'callUpdate',
@@ -36988,7 +36988,7 @@
 	          defaultValue: readContent.content,
 	          disabled: isEnabled })
 	      ),
-	      _react2.default.createElement('input', { type: 'submit', value: buttonName, className: 'btn btn-success', onClick: onSave })
+	      _react2.default.createElement('input', { type: 'button', value: buttonName, className: 'btn btn-success', onClick: onSave })
 	    )
 	  );
 	};
