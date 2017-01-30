@@ -28,7 +28,9 @@ const BoardList = ({contents}) => {
         {contents.map(content =>
           <tr key={content.id}>
               <td>{content.id}</td>
-              <td>{content.title}</td>
+              <td>
+                <Link to={'/about/'+content.id}>{content.title}</Link>
+              </td>
               <td>{content.author}</td>
               <td>{content.date}</td>
           </tr>

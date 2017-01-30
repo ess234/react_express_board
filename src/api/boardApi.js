@@ -74,6 +74,22 @@ export default class boardApi{
       else {
         reject(Error("saveContent Error"));
       }
-    })
+    });
+  }
+
+  static updateContent(content){
+    return new Promise((resolve, reject) => {
+      if (content) {
+        let targetIndex = contents.findIndex(a => a.id === content.id);
+
+        content.date = new Date().toLocaleDateString().replace(/(\s*)/g,"").split('.').slice(0,3).join('/');
+
+        //콘솔에 content 객체 정보가 찍힘
+        resolve(content);
+      }
+      else {
+        reject(Error("updateContent Error"));
+      }
+    });
   }
 }

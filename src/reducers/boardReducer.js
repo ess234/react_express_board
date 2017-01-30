@@ -1,4 +1,4 @@
-import { LOAD_BOARD_CLEAR, CALL_WRITE } from '../actions/actionTypes';
+import { LOAD_BOARD_CLEAR, CALL_WRITE, UPDATE_BOARD } from '../actions/actionTypes';
 import initState from './initState';
 
 //action Type이 LOAD_BOARD_CLEAR인 Reducer를 boardReducers에서 찾는다.
@@ -12,6 +12,11 @@ const boardReducers = (state = initState.contents, action) => {
         ...state,
         Object.assign({}, action.content)
       ];
+    case UPDATE_BOARD:
+        return [
+          ...state.filter(content => content.id !== action.content.id),
+          Object.assign({}, action.content)
+        ].sort((a,b) => a.id > b.id);
     default:
       return state;
   }

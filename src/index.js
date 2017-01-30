@@ -8,7 +8,7 @@ import { Provider  } from 'react-redux';
 import routes from './routes';
 import configStore from './store';
 import {loadBoard} from './actions/boardActions';
-// import './style/style.css';
+import './style/style.css';
 
 //스토어를 생성하고, boardActions로 부터 loadBoard액션을 dispatch함
 const store = configStore();

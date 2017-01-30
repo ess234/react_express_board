@@ -11,6 +11,7 @@ export default (
     <Route path="main" component={Main}/>
     <Route path="about" component={About}/>
     <Route path="write" component={ManageBoard}/>
+    <Route path="about/:id" component={ManageBoard}/>
   </Route>
 );
 
