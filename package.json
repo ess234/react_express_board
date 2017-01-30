@@ -1,3 +1,4 @@
+
 {
   "name": "react_sl",
   "version": "1.0.0",
@@ -7,13 +8,13 @@
     "clean": "rmdir /s/q build && rmdir /q build && del public\bundle.js",
     "build": "babel server --out-dir build && webpack",
     "start": "set NODE_ENV=production&&node ./build/main.js",
-    "development": "set NODE_ENV=development&&node ./build/main.js"
+    "development": "set NODE_ENV=development&&node ./build/main.js",
+    "development_nodemon": "set NODE_ENV=development&&nodemon --exec babel-node --presets=es2015 ./server/main.js --watch server"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "babel-polyfill": "^6.13.0",
-    "bootstrap": "^3.3.7",
     "express": "^4.14.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
