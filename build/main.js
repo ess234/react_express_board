@@ -12,9 +12,9 @@ var _webpack = require('webpack');
 
 var _webpack2 = _interopRequireDefault(_webpack);
 
-var _posts = require('./routes/posts');
+var _path = require('path');
 
-var _posts2 = _interopRequireDefault(_posts);
+var _path2 = _interopRequireDefault(_path);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34,15 +34,22 @@ if (process.env.NODE_ENV == 'development') {
 }
 
 // 경로 '/' 로 들어오는 요청들은 public 폴더로 정적 라우팅합니다.
-app.use('/', _express2.default.static(__dirname + '/../public'));
+app.use('/', _express2.default.static(_path2.default.join(__dirname + './../public')));
 
-app.get('/hello', function (req, res) {
-    return res.send('Can you hear me?');
+//express 서버에서 클라이언트사이드 라우팅을 호환
+app.get('*', function (req, res) {
+    res.sendFile(_path2.default.resolve(__dirname, './../public/index.html'));
 });
 
-// 라우트 예제입니다.
+//
+// app.get('/hello', (req, res) => {
+//     return res.send('Can you hear me?');
+// });
+//
+// // 라우트 예제입니다.
+// import posts from './routes/posts';
+// app.use('/posts', posts);
 
-app.use('/posts', _posts2.default);
 
 var server = app.listen(port, function () {
     console.log('Express listening on port', port);
