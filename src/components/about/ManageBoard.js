@@ -30,7 +30,7 @@ updateChangeState(event) {
 }
 
 callModify() {
-  this.setState({formTitle:'Update'});
+  this.setState({formTitle:'update'});
 }
 
 callUpdate(event) {
