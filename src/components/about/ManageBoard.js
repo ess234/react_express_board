@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 import BoardForm from './BoardForm';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -62,7 +63,7 @@ callWrite(event) {
 redirect() {
   // toastr.options.positionClass = 'toast-bottom-right';
   // toastr.success('content saved');
-  this.context.router.push('/about');
+  this.context.router.push('/board');
 }
 
   render(){
@@ -93,14 +94,27 @@ redirect() {
 
     //dumb 컴포넌트로 내려줄 props를 정의한다.
     return (
-      <BoardForm
-        onChange={changeState}
-        onSave={onClickTypes}
-        isEnabled={isEnabled}
-        readContent={contentResult}
-        formTitle={formTitle}
-        buttonName={buttonName}
-      ></BoardForm>
+      <div id="wrapper">
+        <div id="page-wrapper" className="gray-bg">
+          <div className="row border-bottom">
+          </div>
+          <div className="row wrapper border-bottom white-bg page-heading">
+            <div className="col-lg-10">
+              <h2>시리얼 라이센스 등록</h2>              
+          </div>
+          <div class="col-lg-2">
+          </div>
+        </div>
+        <BoardForm
+          onChange={changeState}
+          onSave={onClickTypes}
+          isEnabled={isEnabled}
+          readContent={contentResult}
+          formTitle={formTitle}
+          buttonName={buttonName}
+        ></BoardForm>
+      </div>
+    </div>
     );
   }
 }

@@ -64,13 +64,13 @@
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _store = __webpack_require__(568);
+	var _store = __webpack_require__(570);
 
 	var _store2 = _interopRequireDefault(_store);
 
 	var _boardActions = __webpack_require__(560);
 
-	__webpack_require__(573);
+	__webpack_require__(575);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36161,15 +36161,15 @@
 
 	var _Header2 = _interopRequireDefault(_Header);
 
-	var _About = __webpack_require__(559);
+	var _Board = __webpack_require__(559);
 
-	var _About2 = _interopRequireDefault(_About);
+	var _Board2 = _interopRequireDefault(_Board);
 
-	var _Main = __webpack_require__(564);
+	var _Main = __webpack_require__(566);
 
 	var _Main2 = _interopRequireDefault(_Main);
 
-	var _ManageBoard = __webpack_require__(565);
+	var _ManageBoard = __webpack_require__(567);
 
 	var _ManageBoard2 = _interopRequireDefault(_ManageBoard);
 
@@ -36180,7 +36180,7 @@
 	  { path: '/', component: _Header2.default },
 	  _react2.default.createElement(_reactRouter.IndexRoute, { component: _Main2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'main', component: _Main2.default }),
-	  _react2.default.createElement(_reactRouter.Route, { path: 'about', component: _About2.default }),
+	  _react2.default.createElement(_reactRouter.Route, { path: 'board', component: _Board2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'write', component: _ManageBoard2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'about/:id', component: _ManageBoard2.default })
 	);
@@ -36249,8 +36249,8 @@
 	        "  /  ",
 	        _react2.default.createElement(
 	          _reactRouter.Link,
-	          { to: '/about', activeClassName: 'active' },
-	          'About'
+	          { to: '/board', activeClassName: 'active' },
+	          'Board'
 	        ),
 	        this.props.children
 	      );
@@ -36290,6 +36290,14 @@
 
 	var _BoardList2 = _interopRequireDefault(_BoardList);
 
+	var _BoardSearch = __webpack_require__(564);
+
+	var _BoardSearch2 = _interopRequireDefault(_BoardSearch);
+
+	var _BoardTablebar = __webpack_require__(565);
+
+	var _BoardTablebar2 = _interopRequireDefault(_BoardTablebar);
+
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -36305,16 +36313,16 @@
 
 	//!! context는 상위 컴포넌트에서 하위 컴포넌트로 바로 데이터를 전달하는 역할을 함
 	//react-router에서 history를 조작하는 방법으로 사용함 (뒤로가기, 앞으로가기, 페이지 이동)
-	var About = function (_React$Component) {
-	  _inherits(About, _React$Component);
+	var Board = function (_React$Component) {
+	  _inherits(Board, _React$Component);
 
-	  function About(props, context) {
-	    _classCallCheck(this, About);
+	  function Board(props, context) {
+	    _classCallCheck(this, Board);
 
-	    return _possibleConstructorReturn(this, (About.__proto__ || Object.getPrototypeOf(About)).call(this, props, context));
+	    return _possibleConstructorReturn(this, (Board.__proto__ || Object.getPrototypeOf(Board)).call(this, props, context));
 	  }
 
-	  _createClass(About, [{
+	  _createClass(Board, [{
 	    key: 'render',
 	    value: function render() {
 	      //mapStateToProps를 통해 State를 props로 매핑되었기 때문에 props로 contents를 호출할 수 있다.
@@ -36325,16 +36333,56 @@
 	      //content:array[4]
 	      return _react2.default.createElement(
 	        'div',
-	        null,
-	        _react2.default.createElement(_BoardList2.default, { contents: contents })
+	        { id: 'wrapper' },
+	        _react2.default.createElement(
+	          'div',
+	          { id: 'page-wrapper', className: 'gray-bg' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'wrapper wrapper-content animated fadeInRight' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'row' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'col-lg-12' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'ibox float-e-margins' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'ibox-title' },
+	                    _react2.default.createElement(
+	                      'h5',
+	                      null,
+	                      '\uC2DC\uB9AC\uC5BC \uBAA9\uB85D'
+	                    ),
+	                    _react2.default.createElement('div', { className: 'ibox-tools' })
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'ibox-content' },
+	                    _react2.default.createElement(_BoardSearch2.default, null),
+	                    _react2.default.createElement(
+	                      'div',
+	                      { className: 'table-responsive' },
+	                      _react2.default.createElement(_BoardTablebar2.default, null),
+	                      _react2.default.createElement(_BoardList2.default, { contents: contents })
+	                    )
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        )
 	      );
 	    }
 	  }]);
 
-	  return About;
+	  return Board;
 	}(_react2.default.Component);
 
-	About.propTypes = {
+	Board.propTypes = {
 	  contents: _react2.default.PropTypes.array.isRequired,
 	  actions: _react2.default.PropTypes.object.isRequired
 	};
@@ -36356,7 +36404,7 @@
 	//연결 - Redux 스토어에 컴포넌트를 연결해주는 역할을 한다.
 	//about 컴포넌트는 connect를 통해 redux store와 연결되 있기 때문에 rootReducer에서
 	//정의한 키값인 contents로 newstate를 호출할 수 있다.
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(About);
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Board);
 
 /***/ },
 /* 560 */
@@ -36439,54 +36487,54 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var contents = [{
-	  id: "1",
-	  title: "Careless Mistakes",
-	  content: "This is very disappointing. I have had the book for about 3 hour now",
-	  author: "pat J Ryll",
-	  date: "2014/04/13"
-	}, {
-	  id: "2",
-	  title: "Hindered by many, many mistakes",
-	  content: "The explanation is good and the exercises are helpful but I've found several critical mistakes",
-	  author: "Joshua Cunningham",
-	  date: "2014/06/03"
-	}
-	// {
+	var contents = [
+	//  {
 	//   id:"1",
-	//   ser:"SKRO1CWIS214892",
-	//   lic:"5ff4cad610a94192",
-	//   co:"ux_1",
-	//   admin:"ux_1",
-	//   tel:"ux_1",
-	//   mail:"ux_1",
-	//   ver:"ONE",
-	//   date:"20170123",
-	//   limit_date:"20190223",
-	//   mac:"000D48299CDE",
-	//   charge:"ux_1",
-	//   business:"ux_1",
-	//   note:"신규발급",
-	//   note2:"ux_1"
+	//   title:"Careless Mistakes",
+	//   content:"This is very disappointing. I have had the book for about 3 hour now",
+	//   author:"pat J Ryll",
+	//   date:"2014/04/13"
 	// },
 	// {
 	//   id:"2",
-	//   ser:"SKRTECWI5214898",
-	//   lic:"15986ced9b974fbb",
-	//   co:"ux",
-	//   admin:"ux",
-	//   tel:"ux",
-	//   mail:"",
-	//   ver:"ITMS",
-	//   date:"20170120",
-	//   limit_date:"20190220",
-	//   mac:"000D48299CDE",
-	//   charge:"ux",
-	//   business:"ux",
-	//   note:"신규발급",
-	//   note2:""
+	//   title:"Hindered by many, many mistakes",
+	//   content:"The explanation is good and the exercises are helpful but I've found several critical mistakes",
+	//   author:"Joshua Cunningham",
+	//   date:"2014/06/03"
 	// }
-	];
+	{
+	  id: "1",
+	  ser: "SKRO1CWIS214892",
+	  lic: "5ff4cad610a94192",
+	  co: "ux_1",
+	  admin: "ux_1",
+	  tel: "ux_1",
+	  mail: "ux_1",
+	  ver: "ONE",
+	  date: "20170123",
+	  limit_date: "20190223",
+	  mac: "000D48299CDE",
+	  charge: "ux_1",
+	  business: "ux_1",
+	  note: "신규발급",
+	  note2: "ux_1"
+	}, {
+	  id: "2",
+	  ser: "SKRTECWI5214898",
+	  lic: "15986ced9b974fbb",
+	  co: "ux",
+	  admin: "ux",
+	  tel: "ux",
+	  mail: "",
+	  ver: "ITMS",
+	  date: "20170120",
+	  limit_date: "20190220",
+	  mac: "000D48299CDE",
+	  charge: "ux",
+	  business: "ux",
+	  note: "신규발급",
+	  note2: ""
+	}];
 	// async(비동기) 로직, 콜백 지옥을 해결하기 위한 라이브러리
 
 	var boardApi = function () {
@@ -36565,17 +36613,78 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 	//dumb 컴포넌트는 smart 컴포넌트와 구분을 위해 stateless 방식으로
 	//render 함수 없이 리턴하는 방식으로 구현한다.
 
 	//about으로 부터 넘어온 prop contents는 객체임으로 ()안에
 	//{}으로 감싸 객체임을 알려줘야 map을 사용할 수 있다.
 	var BoardList = function BoardList(_ref) {
+	  var _React$createElement;
+
 	  var contents = _ref.contents;
 
+	  // return (
+	  //   <table className="table table-bordered table-hover"
+	  //     data-toolbar="#toolbar"
+	  //     data-toggle="table" id='table'
+	  //     data-width="100%"
+	  //     data-height="600"
+	  //     data-toggle="table"
+	  //     data-show-columns="true"
+	  //     data-pagination ="true"
+	  //     data-page-size="15"
+	  //     data-page-list="[15, 30, 60, 100, 1000]"
+	  //     data-locale="ko-KR"
+	  //     data-sort-name="date"
+	  //     data-sort-order="desc"
+	  //     data-single-select="false"
+	  //     data-click-to-select="true"
+	  //     data-search="true"
+	  //     data-show-toggle="false"
+	  //     data-smart-display="false"
+	  //     data-checkbox-header="true"
+	  //     data-checkbox="true"
+	  //     data-row-style="rowStyle"
+	  //   >
+	  //     <thead>
+	  //       <tr>
+	  //         <th colSpan="4" className="text-right">
+	  //           <Link to="/write" className="btn btn-primary">
+	  //             Write
+	  //           </Link>
+	  //         </th>
+	  //       </tr>
+	  //       <tr>
+	  //         <th>No</th>
+	  //         <th>Title</th>
+	  //         <th>Author</th>
+	  //         <th>Date</th>
+	  //       </tr>
+	  //     </thead>
+	  //     <tbody>
+	  //       {contents.map(content =>
+	  //         <tr key={content.id}>
+	  //             <td>{content.id}</td>
+	  //             <td>
+	  //               <Link to={'/about/'+content.id}>{content.title}</Link>
+	  //             </td>
+	  //             <td>{content.author}</td>
+	  //             <td>{content.date}</td>
+	  //         </tr>
+	  //       )}
+	  //     </tbody>
+	  //   </table>
+	  // );
 	  return _react2.default.createElement(
 	    'table',
-	    { className: 'table table-hover table-striped' },
+	    (_React$createElement = { className: 'table table-bordered table-hover',
+	      'data-toolbar': '#toolbar',
+	      'data-toggle': 'table', id: 'table',
+	      'data-width': '100%',
+	      'data-height': '600'
+	    }, _defineProperty(_React$createElement, 'data-toggle', 'table'), _defineProperty(_React$createElement, 'data-show-columns', 'true'), _defineProperty(_React$createElement, 'data-pagination', 'true'), _defineProperty(_React$createElement, 'data-page-size', '15'), _defineProperty(_React$createElement, 'data-page-list', '[15, 30, 60, 100, 1000]'), _defineProperty(_React$createElement, 'data-locale', 'ko-KR'), _defineProperty(_React$createElement, 'data-sort-name', 'date'), _defineProperty(_React$createElement, 'data-sort-order', 'desc'), _defineProperty(_React$createElement, 'data-single-select', 'false'), _defineProperty(_React$createElement, 'data-click-to-select', 'true'), _defineProperty(_React$createElement, 'data-search', 'true'), _defineProperty(_React$createElement, 'data-show-toggle', 'false'), _defineProperty(_React$createElement, 'data-smart-display', 'false'), _defineProperty(_React$createElement, 'data-checkbox-header', 'true'), _defineProperty(_React$createElement, 'data-checkbox', 'true'), _defineProperty(_React$createElement, 'data-row-style', 'rowStyle'), _React$createElement),
 	    _react2.default.createElement(
 	      'thead',
 	      null,
@@ -36584,10 +36693,10 @@
 	        null,
 	        _react2.default.createElement(
 	          'th',
-	          { colSpan: '4', className: 'text-right' },
+	          { colSpan: '15', className: 'text-right' },
 	          _react2.default.createElement(
 	            _reactRouter.Link,
-	            { to: '/write', className: 'btn btn-primary' },
+	            { to: '/write', className: 'btn btn-info' },
 	            'Write'
 	          )
 	        )
@@ -36597,23 +36706,78 @@
 	        null,
 	        _react2.default.createElement(
 	          'th',
-	          null,
-	          'No'
+	          { 'data-field': 'state', 'data-checkbox': 'true' },
+	          _react2.default.createElement('input', { type: 'checkbox' })
 	        ),
 	        _react2.default.createElement(
 	          'th',
-	          null,
-	          'Title'
+	          { 'data-field': 'ver', 'data-sortable': 'true', 'data-align': 'center' },
+	          '\uBAA8\uB378'
 	        ),
 	        _react2.default.createElement(
 	          'th',
-	          null,
-	          'Author'
+	          { 'data-field': 'co', 'data-sortable': 'true', 'data-align': 'center' },
+	          '\uACE0\uAC1D\uC0AC'
 	        ),
 	        _react2.default.createElement(
 	          'th',
-	          null,
-	          'Date'
+	          { 'data-field': 'admin', 'data-sortable': 'true', 'data-align': 'center' },
+	          '\uC7A5\uBE44SN'
+	        ),
+	        _react2.default.createElement(
+	          'th',
+	          { 'data-field': 'ser', 'data-sortable': 'true', 'data-align': 'center', 'data-halign': 'center', 'data-formatter': 'serial_info_link' },
+	          '\uC2DC\uB9AC\uC5BC'
+	        ),
+	        _react2.default.createElement(
+	          'th',
+	          { 'data-field': 'lic', 'data-sortable': 'true', 'data-align': 'center' },
+	          '\uB77C\uC774\uC13C\uC2A4'
+	        ),
+	        _react2.default.createElement(
+	          'th',
+	          { 'data-field': 'mac', 'data-sortable': 'true', 'data-align': 'center' },
+	          'MAC'
+	        ),
+	        _react2.default.createElement(
+	          'th',
+	          { 'data-field': 'tel', 'data-sortable': 'true', 'data-align': 'center' },
+	          '\uD504\uB85C\uC81D\uD2B8'
+	        ),
+	        _react2.default.createElement(
+	          'th',
+	          { 'data-field': 'mail', 'data-sortable': 'true', 'data-align': 'center' },
+	          '\uCD9C\uACE0\uAD6C\uBD84'
+	        ),
+	        _react2.default.createElement(
+	          'th',
+	          { 'data-field': 'date', 'data-sortable': 'true', 'data-align': 'center' },
+	          '\uB4F1\uB85D\uC77C'
+	        ),
+	        _react2.default.createElement(
+	          'th',
+	          { 'data-field': 'limit_date', 'data-sortable': 'true', 'data-align': 'center' },
+	          '\uB9CC\uAE30\uC77C'
+	        ),
+	        _react2.default.createElement(
+	          'th',
+	          { 'data-field': 'charge', 'data-sortable': 'true', 'data-align': 'center' },
+	          '\uD611\uB825\uC0AC'
+	        ),
+	        _react2.default.createElement(
+	          'th',
+	          { 'data-field': 'business', 'data-sortable': 'true', 'data-align': 'center' },
+	          '\uC601\uC5C5'
+	        ),
+	        _react2.default.createElement(
+	          'th',
+	          { 'data-field': 'note', 'data-sortable': 'true', 'data-align': 'center' },
+	          '\uBE44\uACE0'
+	        ),
+	        _react2.default.createElement(
+	          'th',
+	          { 'data-field': 'note2', 'data-sortable': 'true', 'data-align': 'center' },
+	          '\uBA54\uBAA8'
 	        )
 	      )
 	    ),
@@ -36627,80 +36791,82 @@
 	          _react2.default.createElement(
 	            'td',
 	            null,
-	            content.id
+	            _react2.default.createElement('input', { type: 'checkbox' })
 	          ),
 	          _react2.default.createElement(
 	            'td',
 	            null,
-	            _react2.default.createElement(
-	              _reactRouter.Link,
-	              { to: '/about/' + content.id },
-	              content.title
-	            )
+	            content.ver
 	          ),
 	          _react2.default.createElement(
 	            'td',
 	            null,
-	            content.author
+	            content.co
+	          ),
+	          _react2.default.createElement(
+	            'td',
+	            null,
+	            content.admin
+	          ),
+	          _react2.default.createElement(
+	            'td',
+	            null,
+	            content.ser
+	          ),
+	          _react2.default.createElement(
+	            'td',
+	            null,
+	            content.lic
+	          ),
+	          _react2.default.createElement(
+	            'td',
+	            null,
+	            content.mac
+	          ),
+	          _react2.default.createElement(
+	            'td',
+	            null,
+	            content.tel
+	          ),
+	          _react2.default.createElement(
+	            'td',
+	            null,
+	            content.mail
 	          ),
 	          _react2.default.createElement(
 	            'td',
 	            null,
 	            content.date
+	          ),
+	          _react2.default.createElement(
+	            'td',
+	            null,
+	            content.limit_date
+	          ),
+	          _react2.default.createElement(
+	            'td',
+	            null,
+	            content.charge
+	          ),
+	          _react2.default.createElement(
+	            'td',
+	            null,
+	            content.business
+	          ),
+	          _react2.default.createElement(
+	            'td',
+	            null,
+	            content.note
+	          ),
+	          _react2.default.createElement(
+	            'td',
+	            null,
+	            content.note2
 	          )
 	        );
 	      })
 	    )
 	  );
-	  // return (
-	  //   <table className="table table-hover table-striped">
-	  //     <thead>
-	  //       <tr>
-	  //         <th colSpan="4" className="text-right">
-	  //           <Link to="/write" className="btn btn-primary">
-	  //             Write
-	  //           </Link>
-	  //         </th>
-	  //       </tr>
-	  //       <tr>
-	  //         <th>모델</th>
-	  //         <th>고객사</th>
-	  //         <th>장비SN</th>
-	  //         <th>시리얼</th>
-	  //         <th>라이센스</th>
-	  //         <th>MAC</th>
-	  //         <th>프로젝트</th>
-	  //         <th>출고구분</th>
-	  //         <th>등록일</th>
-	  //         <th>만기일</th>
-	  //         <th>협력사</th>
-	  //         <th>영업</th>
-	  //         <th>비고</th>
-	  //         <th>메모</th>
-	  //       </tr>
-	  //     </thead>
-	  //     <tbody>
-	  //       {contents.map(content =>
-	  //         <tr key={content.id}>
-	  //             <td>{content.ver}</td>
-	  //             <td>{content.co}</td>
-	  //             <td>{content.admin}</td>
-	  //             <td>{content.ser}</td>
-	  //             <td>{content.lic}</td>
-	  //             <td>{content.mac}</td>
-	  //             <td>{content.tel}</td>
-	  //             <td>{content.mail}</td>
-	  //             <td>{content.date}</td>
-	  //             <td>{content.limit_date}</td>
-	  //             <td>{content.charge}</td>
-	  //             <td>{content.business}</td>
-	  //             <td>{content.note}</td>
-	  //             <td>{content.note2}</td>
-	  //         </tr>
-	  //       )}
-	  //     </tbody>
-	  //   </table>
-	  // )
 	};
 
 	BoardList.propTypes = {
@@ -36711,12 +36877,476 @@
 
 /***/ },
 /* 564 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(298);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var BoardSearch = function BoardSearch() {
+	  return _react2.default.createElement(
+	    "div",
+	    { className: "panel panel-info", id: "searchDiv" },
+	    _react2.default.createElement(
+	      "div",
+	      { className: "panel-body" },
+	      _react2.default.createElement(
+	        "form",
+	        { id: "searchForm" },
+	        _react2.default.createElement(
+	          "table",
+	          { className: "table" },
+	          _react2.default.createElement(
+	            "tbody",
+	            null,
+	            _react2.default.createElement(
+	              "tr",
+	              null,
+	              _react2.default.createElement(
+	                "td",
+	                null,
+	                _react2.default.createElement(
+	                  "nobr",
+	                  null,
+	                  "\uAD6D\uAC00"
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "td",
+	                null,
+	                _react2.default.createElement(
+	                  "select",
+	                  { className: "form-control", name: "nation", id: "nation", value: "" },
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "", selected: true },
+	                    " -- "
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "KR" },
+	                    " \uD55C\uAD6D "
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "JP" },
+	                    " \uC77C\uBCF8 "
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "CN" },
+	                    " \uC911\uAD6D "
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "TW" },
+	                    " \uB300\uB9CC "
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "TH" },
+	                    " \uD0DC\uAD6D "
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "SG" },
+	                    " \uC2F1\uAC00\uD3EC\uB974 "
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "US" },
+	                    " \uBBF8\uAD6D "
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "MY" },
+	                    " \uB9D0\uB808\uC774\uC2DC\uC544 "
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "NZ" },
+	                    " \uB274\uC9C8\uB79C\uB4DC "
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "td",
+	                null,
+	                _react2.default.createElement(
+	                  "nobr",
+	                  null,
+	                  "\uBAA8\uB378"
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "td",
+	                null,
+	                _react2.default.createElement(
+	                  "select",
+	                  { className: "form-control", name: "ver", id: "ver", value: "" },
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "", selected: true },
+	                    " -- "
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "IDS" },
+	                    "SNIPER IDS"
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "IPS" },
+	                    "SNIPER IPS"
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "IPSA" },
+	                    "SNIPER IPS A"
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "IPSEF" },
+	                    "SNIPER IPS E/F"
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "IPSV" },
+	                    "SNIPER IPS V"
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "MNS" },
+	                    "SNIPER IPS-MNS"
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "DNS" },
+	                    "SNIPER IPS-DNS"
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "MIS" },
+	                    "SNIPER MIS"
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "DDX" },
+	                    "SNIPER DDX"
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "SENSOR" },
+	                    "SNIPER DDX SENSOR"
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "AMS" },
+	                    "SNIPER AMS"
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "WAF" },
+	                    "SNIPER WAF"
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "VF" },
+	                    "SNIPER VF"
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "ITMS" },
+	                    "SNIPER ITMS"
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "TSMA" },
+	                    "SNIPER TSMA"
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "APTX" },
+	                    "SNIPER APTX"
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "BPS" },
+	                    "SNIPER BPS"
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "AF" },
+	                    "SNIPER AF"
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "VPM" },
+	                    "SNIPER VPM"
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "ONE" },
+	                    "SNIPER ONE"
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "LUS" },
+	                    "SNIPER LUS"
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "ONE-i" },
+	                    "SNIPER ONE-i"
+	                  ),
+	                  _react2.default.createElement(
+	                    "option",
+	                    { value: "ONE-d" },
+	                    "SNIPER ONE-d"
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "td",
+	                null,
+	                _react2.default.createElement(
+	                  "nobr",
+	                  null,
+	                  "\uC2DC\uB9AC\uC5BC"
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "td",
+	                null,
+	                _react2.default.createElement("input", { type: "text", className: "form-control input-sm", id: "ser", name: "ser" })
+	              ),
+	              _react2.default.createElement(
+	                "td",
+	                null,
+	                _react2.default.createElement(
+	                  "nobr",
+	                  null,
+	                  "\uB77C\uC774\uC13C\uC2A4"
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "td",
+	                null,
+	                _react2.default.createElement("input", { type: "text", className: "form-control input-sm", id: "lic", name: "lic" })
+	              )
+	            ),
+	            _react2.default.createElement(
+	              "tr",
+	              null,
+	              _react2.default.createElement(
+	                "td",
+	                null,
+	                _react2.default.createElement(
+	                  "nobr",
+	                  null,
+	                  "\uB4F1\uB85D\uC77C"
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "td",
+	                null,
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "form-group", id: "datepicker1" },
+	                  _react2.default.createElement(
+	                    "div",
+	                    { className: "input-group date" },
+	                    _react2.default.createElement(
+	                      "span",
+	                      { className: "input-group-addon" },
+	                      _react2.default.createElement("i", { className: "fa fa-calendar" })
+	                    ),
+	                    _react2.default.createElement("input", { type: "text", className: "form-control", id: "date", name: "date" })
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "td",
+	                null,
+	                _react2.default.createElement(
+	                  "nobr",
+	                  null,
+	                  "\uB9CC\uAE30\uC77C"
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "td",
+	                null,
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "form-group", id: "datepicker2" },
+	                  _react2.default.createElement(
+	                    "div",
+	                    { className: "input-group date" },
+	                    _react2.default.createElement(
+	                      "span",
+	                      { className: "input-group-addon" },
+	                      _react2.default.createElement("i", { className: "fa fa-calendar" })
+	                    ),
+	                    _react2.default.createElement("input", { type: "text", className: "form-control", id: "limit_date", name: "limit_date" })
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "td",
+	                null,
+	                _react2.default.createElement(
+	                  "nobr",
+	                  null,
+	                  "\uACE0\uAC1D\uC0AC"
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "td",
+	                null,
+	                _react2.default.createElement("input", { type: "text", className: "form-control input-sm", id: "co", name: "co" })
+	              ),
+	              _react2.default.createElement(
+	                "td",
+	                null,
+	                _react2.default.createElement(
+	                  "nobr",
+	                  null,
+	                  "\uD611\uB825\uC0AC"
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "td",
+	                null,
+	                _react2.default.createElement("input", { type: "text", className: "form-control input-sm", id: "charge", name: "charge" })
+	              )
+	            ),
+	            _react2.default.createElement(
+	              "tr",
+	              null,
+	              _react2.default.createElement(
+	                "td",
+	                null,
+	                _react2.default.createElement(
+	                  "nobr",
+	                  null,
+	                  "MAC"
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "td",
+	                null,
+	                _react2.default.createElement("input", { type: "text", className: "form-control input-sm", id: "mac", name: "mac" })
+	              ),
+	              _react2.default.createElement(
+	                "td",
+	                null,
+	                _react2.default.createElement(
+	                  "nobr",
+	                  null,
+	                  "\uC7A5\uBE44SN"
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "td",
+	                null,
+	                _react2.default.createElement("input", { type: "text", className: "form-control input-sm", id: "admin", name: "admin" })
+	              ),
+	              _react2.default.createElement(
+	                "td",
+	                null,
+	                _react2.default.createElement(
+	                  "nobr",
+	                  null,
+	                  "\uD504\uB85C\uC81D\uD2B8"
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "td",
+	                null,
+	                _react2.default.createElement("input", { type: "text", className: "form-control input-sm", id: "tel", name: "tel" })
+	              ),
+	              _react2.default.createElement(
+	                "td",
+	                null,
+	                _react2.default.createElement(
+	                  "nobr",
+	                  null,
+	                  "\uCD9C\uACE0\uAD6C\uBD84"
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "td",
+	                null,
+	                _react2.default.createElement("input", { type: "text", className: "form-control input-sm", id: "mail", name: "mail" })
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "button",
+	          { className: "btn btn-info ", type: "button", id: "searchBtn" },
+	          _react2.default.createElement("i", { className: "fa fa-search" }),
+	          " \uAC80\uC0C9"
+	        )
+	      )
+	    )
+	  );
+	};
+
+	exports.default = BoardSearch;
+
+/***/ },
+/* 565 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(298);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var BoardTablebar = function BoardTablebar() {
+	  return _react2.default.createElement(
+	    "div",
+	    { id: "toolbar" },
+	    _react2.default.createElement(
+	      "button",
+	      { className: "btn btn-danger btn-circle btn-outline", type: "button", id: "delBtn", "data-toggle": "tooltip", "data-placement": "bottom", title: "\uC0AD\uC81C" },
+	      _react2.default.createElement("i", { className: "fa fa-trash-o" })
+	    ),
+	    _react2.default.createElement(
+	      "button",
+	      { className: "btn btn-info btn-circle btn-outline", type: "button", id: "searchFormBtn", "data-toggle": "tooltip", "data-placement": "bottom", title: "\uC0C1\uC138\uAC80\uC0C9" },
+	      _react2.default.createElement("i", { className: "fa fa-search-plus" })
+	    )
+	  );
+	};
+
+	exports.default = BoardTablebar;
+
+/***/ },
+/* 566 */
 /***/ function(module, exports) {
 
 	"use strict";
 
 /***/ },
-/* 565 */
+/* 567 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36731,7 +37361,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _BoardForm = __webpack_require__(566);
+	var _reactRouter = __webpack_require__(474);
+
+	var _BoardForm = __webpack_require__(568);
 
 	var _BoardForm2 = _interopRequireDefault(_BoardForm);
 
@@ -36830,7 +37462,7 @@
 	    value: function redirect() {
 	      // toastr.options.positionClass = 'toast-bottom-right';
 	      // toastr.success('content saved');
-	      this.context.router.push('/about');
+	      this.context.router.push('/board');
 	    }
 	  }, {
 	    key: 'render',
@@ -36858,14 +37490,37 @@
 	      }
 
 	      //dumb 컴포넌트로 내려줄 props를 정의한다.
-	      return _react2.default.createElement(_BoardForm2.default, {
-	        onChange: changeState,
-	        onSave: onClickTypes,
-	        isEnabled: isEnabled,
-	        readContent: contentResult,
-	        formTitle: formTitle,
-	        buttonName: buttonName
-	      });
+	      return _react2.default.createElement(
+	        'div',
+	        { id: 'wrapper' },
+	        _react2.default.createElement(
+	          'div',
+	          { id: 'page-wrapper', className: 'gray-bg' },
+	          _react2.default.createElement('div', { className: 'row border-bottom' }),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'row wrapper border-bottom white-bg page-heading' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-lg-10' },
+	              _react2.default.createElement(
+	                'h2',
+	                null,
+	                '\uC2DC\uB9AC\uC5BC \uB77C\uC774\uC13C\uC2A4 \uB4F1\uB85D'
+	              )
+	            ),
+	            _react2.default.createElement('div', { className: 'col-lg-2' })
+	          ),
+	          _react2.default.createElement(_BoardForm2.default, {
+	            onChange: changeState,
+	            onSave: onClickTypes,
+	            isEnabled: isEnabled,
+	            readContent: contentResult,
+	            formTitle: formTitle,
+	            buttonName: buttonName
+	          })
+	        )
+	      );
 	    }
 	  }]);
 
@@ -36923,7 +37578,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ManageBoard);
 
 /***/ },
-/* 566 */
+/* 568 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36936,7 +37591,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _FormInput = __webpack_require__(567);
+	var _FormInput = __webpack_require__(569);
 
 	var _FormInput2 = _interopRequireDefault(_FormInput);
 
@@ -36952,45 +37607,384 @@
 
 	  return _react2.default.createElement(
 	    'div',
-	    null,
+	    { className: 'wrapper wrapper-content animated fadeInRight' },
 	    _react2.default.createElement(
-	      'form',
-	      null,
-	      _react2.default.createElement(
-	        'h1',
-	        null,
-	        formTitle
-	      ),
-	      _react2.default.createElement(_FormInput2.default, {
-	        name: 'author',
-	        label: 'Author',
-	        onChange: onChange,
-	        defaultValue: readContent.author,
-	        disabled: isEnabled }),
-	      _react2.default.createElement(_FormInput2.default, {
-	        name: 'title',
-	        label: 'Title',
-	        onChange: onChange,
-	        defaultValue: readContent.title,
-	        disabled: isEnabled }),
+	      'div',
+	      { className: 'row' },
 	      _react2.default.createElement(
 	        'div',
-	        { className: 'form-group' },
+	        { className: 'col-lg-12' },
 	        _react2.default.createElement(
-	          'label',
-	          { 'for': 'content' },
-	          'Content'
-	        ),
-	        _react2.default.createElement('textarea', {
-	          id: 'content',
-	          className: 'form-control',
-	          onChange: onChange,
-	          defaultValue: readContent.content,
-	          disabled: isEnabled })
-	      ),
-	      _react2.default.createElement('input', { type: 'button', value: buttonName, className: 'btn btn-success', onClick: onSave })
+	          'div',
+	          { className: 'ibox float-e-margins' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'ibox-title' },
+	            _react2.default.createElement(
+	              'h5',
+	              null,
+	              '\uC2DC\uB9AC\uC5BC \uB4F1\uB85D ',
+	              _react2.default.createElement(
+	                'small',
+	                null,
+	                'Create Serial License'
+	              )
+	            ),
+	            _react2.default.createElement('div', { className: 'ibox-tools' })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'ibox-content' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'row' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'col-sm-9 b-r' },
+	                _react2.default.createElement(
+	                  'form',
+	                  { role: 'form', id: 'addSerialForm' },
+	                  _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    formTitle
+	                  ),
+	                  _react2.default.createElement(_FormInput2.default, {
+	                    name: 'ser',
+	                    label: 'ser',
+	                    onChange: onChange,
+	                    defaultValue: readContent.ser,
+	                    disabled: isEnabled }),
+	                  _react2.default.createElement(_FormInput2.default, {
+	                    name: 'lic',
+	                    label: 'lic',
+	                    onChange: onChange,
+	                    defaultValue: readContent.lic,
+	                    disabled: isEnabled }),
+	                  _react2.default.createElement(_FormInput2.default, {
+	                    name: 'co',
+	                    label: 'co',
+	                    onChange: onChange,
+	                    defaultValue: readContent.co,
+	                    disabled: isEnabled }),
+	                  _react2.default.createElement(_FormInput2.default, {
+	                    name: 'admin',
+	                    label: 'admin',
+	                    onChange: onChange,
+	                    defaultValue: readContent.admin,
+	                    disabled: isEnabled }),
+	                  _react2.default.createElement(_FormInput2.default, {
+	                    name: 'tel',
+	                    label: 'tel',
+	                    onChange: onChange,
+	                    defaultValue: readContent.tel,
+	                    disabled: isEnabled }),
+	                  _react2.default.createElement(_FormInput2.default, {
+	                    name: 'mail',
+	                    label: 'mail',
+	                    onChange: onChange,
+	                    defaultValue: readContent.mail,
+	                    disabled: isEnabled }),
+	                  _react2.default.createElement(_FormInput2.default, {
+	                    name: 'ver',
+	                    label: 'ver',
+	                    onChange: onChange,
+	                    defaultValue: readContent.ver,
+	                    disabled: isEnabled }),
+	                  _react2.default.createElement(_FormInput2.default, {
+	                    name: 'date',
+	                    label: 'date',
+	                    onChange: onChange,
+	                    defaultValue: readContent.date,
+	                    disabled: isEnabled }),
+	                  _react2.default.createElement(_FormInput2.default, {
+	                    name: 'limit_date',
+	                    label: 'limit_date',
+	                    onChange: onChange,
+	                    defaultValue: readContent.limit_date,
+	                    disabled: isEnabled }),
+	                  _react2.default.createElement(_FormInput2.default, {
+	                    name: 'mac',
+	                    label: 'mac',
+	                    onChange: onChange,
+	                    defaultValue: readContent.mac,
+	                    disabled: isEnabled }),
+	                  _react2.default.createElement(_FormInput2.default, {
+	                    name: 'charge',
+	                    label: 'charge',
+	                    onChange: onChange,
+	                    defaultValue: readContent.charge,
+	                    disabled: isEnabled }),
+	                  _react2.default.createElement(_FormInput2.default, {
+	                    name: 'business',
+	                    label: 'business',
+	                    onChange: onChange,
+	                    defaultValue: readContent.business,
+	                    disabled: isEnabled }),
+	                  _react2.default.createElement(_FormInput2.default, {
+	                    name: 'note',
+	                    label: 'note',
+	                    onChange: onChange,
+	                    defaultValue: readContent.note,
+	                    disabled: isEnabled }),
+	                  _react2.default.createElement(_FormInput2.default, {
+	                    name: 'note2',
+	                    label: 'note2',
+	                    onChange: onChange,
+	                    defaultValue: readContent.note2,
+	                    disabled: isEnabled }),
+	                  _react2.default.createElement('input', { type: 'button', value: buttonName, className: 'btn btn-success', onClick: onSave })
+	                )
+	              )
+	            )
+	          )
+	        )
+	      )
 	    )
-	  );
+	  )
+	  //////////////////////////////////////////////////////////////////////////////////////////////////
+	  // <div>
+	  //   <form>
+	  //     <h1>{formTitle}</h1>
+	  //       <FormInput
+	  //         name="author"
+	  //         label="Author"
+	  //         onChange={onChange}
+	  //         defaultValue={readContent.author}
+	  //         disabled={isEnabled}/>
+	  //
+	  //       <FormInput
+	  //         name="title"
+	  //         label="Title"
+	  //         onChange={onChange}
+	  //         defaultValue={readContent.title}
+	  //         disabled={isEnabled}/>
+	  //
+	  //       <div className="form-group">
+	  //         <label for="content">Content</label>
+	  //         <textarea
+	  //           id="content"
+	  //           className="form-control"
+	  //           onChange={onChange}
+	  //           defaultValue={readContent.content}
+	  //           disabled={isEnabled}></textarea>
+	  //       </div>
+	  //       <input type="button" value={buttonName} className="btn btn-success" onClick={onSave}/>
+	  //   </form>
+	  // </div>
+	  // <div className="wrapper wrapper-content animated fadeInRight">
+	  //   <div className="row">
+	  //     <div className="col-lg-12">
+	  //       <div className="ibox float-e-margins">
+	  //         <div className="ibox-title">
+	  //           <h5>시리얼 등록 <small>Create Serial License</small></h5>
+	  //           <div className="ibox-tools">
+	  //           </div>
+	  //         </div>
+	  //         <div className="ibox-content">
+	  //           <div className="row">
+	  //             <div className="col-sm-9 b-r">
+	  //               <form role="form" id="addSerialForm">
+	  //                 <div className="row">
+	  //                   <div className="col-sm-6 b-r">
+	  //                     <div className="form-group">
+	  //                       <label >국가</label>
+	  //                       <select className="form-control m-b" id="nation" name="nation" onchange="changeModelLine()">
+	  //                         <option value='KR' selected> 한국 (KR) </option>
+	  //                         <option value='JP'> 일본 (JP) </option>
+	  //                         <option value='CN'> 중국 (CN) </option>
+	  //                         <option value='TW'> 대만 (TW) </option>
+	  //                         <option value='TH'> 태국 (TH) </option>
+	  //                         <option value='SG'> 싱가포르 (SG) </option>
+	  //                         <option value='US'> 미국 (US) </option>
+	  //                         <option value='MY'> 말레이시아 (MY) </option>
+	  //                         <option value='NZ'> 뉴질랜드 (NZ) </option>
+	  //                       </select>
+	  //                     </div>
+	  //                     <div className="form-group">
+	  //                       <label>제품구분</label>
+	  //                       <select className="form-control m-b" id="model_set" name='model_set'>
+	  //                         <option value='non' selected> ---------- </option>
+	  //                       </select>
+	  //                     </div>
+	  //                     <div className="form-group">
+	  //                       <label>발급업체</label>
+	  //                       <select className="form-control m-b" id="oem" name="oem">
+	  //                         <option value='WI' selected>WINS Technet (WI)</option>
+	  //                         <option value='EX'>AXGATE (EX)</option>
+	  //                         <option value='VP'>포드림 (VP)</option>
+	  //                         <option value='KD'>한전 (KD)</option>
+	  //                       </select>
+	  //                     </div>
+	  //                     <div className="form-group">
+	  //                       <label id="mac_html">MAC</label>
+	  //                       <input type="text" placeholder="MAC" class="form-control" id="mac" name="mac"/>
+	  //                     </div>
+	  //                   </div>
+	  //                   <div className="col-sm-6 ">
+	  //                     <div className="form-group">
+	  //                       <label>제품 종류</label>
+	  //                       <select className="form-control m-b" id="model_line" name="model_line" onchange="changeModelLine()">
+	  //                         <option value="non" selected>----------</option>
+	  //                         <option value="IDS">SNIPER IDS</option>
+	  //                         <option value="IPS">SNIPER IPS</option>
+	  //                         <option value="IPSA">SNIPER IPS A</option>
+	  //                         <option value="IPSEF">SNIPER IPS E/F</option>
+	  //                         <option value="IPSV">SNIPER IPS V</option>
+	  //                         <option value="MNS">SNIPER IPS-MNS</option>
+	  //                         <option value="DNS">SNIPER IPS-DNS</option>
+	  //                         <option value="MIS">SNIPER MIS</option>
+	  //                         <option value="DDX">SNIPER DDX</option>
+	  //                         <option value="SENSOR">SNIPER DDX SENSOR</option>
+	  //                         <option value="AMS">SNIPER AMS</option>
+	  //                         <option value="WAF">SNIPER WAF</option>
+	  //                         <option value="VF">SNIPER VF</option>
+	  //                         <option value="ITMS">SNIPER ITMS</option>
+	  //                         <option value="TSMA">SNIPER TSMA</option>
+	  //                         <option value="APTX">SNIPER APTX</option>
+	  //                         <option value="BPS">SNIPER BPS</option>
+	  //                         <option value="AF">SNIPER AF</option>
+	  //                         <option value="VPM">SNIPER VPM</option>
+	  //                         <option value="ONE">SNIPER ONE</option>
+	  //                         <option value="LUS">SNIPER LUS</option>
+	  //                         <option value="ONE-i">SNIPER ONE-i</option>
+	  //                         <option value="ONE-d">SNIPER ONE-d</option>
+	  //                       </select>
+	  //                     </div>
+	  //                     <div className="form-group">
+	  //                       <label>OS</label>
+	  //                       <select className="form-control m-b" id="os" name="os">
+	  //                         <option value='C' selected> Sniper OS (C) </option>
+	  //                         <option value='L'> Linux (L) </option>
+	  //                         <option value='S'> Solaris (S) </option>
+	  //                         <option value='W'> Windows (W) </option>
+	  //                         <option value='E'> AX Sniper OS (E) </option>
+	  //                       </select>
+	  //                     </div>
+	  //                     <div className="form-group">
+	  //                       <label>발급유형</label>
+	  //                       <select className="form-control m-b" id="sale" name="sale">
+	  //                         <option value='S' selected>납품 (S)</option>
+	  //                         <option value='D'>데모 (D)</option>
+	  //                         <option value='T'>시험 (T)</option>
+	  //                       </select>
+	  //                     </div>
+	  //                     <div className="form-group">
+	  //                       <label>만기일</label>
+	  //                       <div className="row">
+	  //                         <div className="col-sm-9">
+	  //                           <select className="form-control m-b" id="limit_date" name="limit_date">
+	  //                             <option value='10' > 제한없음 </option>
+	  //                             <option value='1' > 1년 </option>
+	  //                             <option value='2' selected> 2년 </option>
+	  //                             <option value='3' > 3년 </option>
+	  //                             <option value='4' > 1개월 </option>
+	  //                             <option value='0' > 만기일 지정 </option>
+	  //                           </select>
+	  //                         </div>
+	  //
+	  //                         <div className="col-sm-3">
+	  //                           <label> <input type="checkbox" className="i-checks" id="limit_date3" name="limit_date3" value="1"/> + 1개월</label>
+	  //                         </div>
+	  //                       </div>
+	  //                     </div>
+	  //                     <div className="form-group" id="datepicker1" style="display: none" >
+	  //                       <label>날짜 선택</label>
+	  //                       <div className="row">
+	  //                         <div className="col-md-11">
+	  //                           <div className="input-group date">
+	  //                             <span className="input-group-addon">
+	  //                               <i className="fa fa-calendar"></i>
+	  //                             </span>
+	  //                             <input type="text" className="form-control" id="limit_date2" name="limit_date2" readonly="readonly"/>
+	  //                           </div>
+	  //                         </div>
+	  //                       </div>
+	  //                     </div>
+	  //                   </div>
+	  //                 </div>
+	  //
+	  //                 <div className="form-group" id="lusDiv" style="display: none">
+	  //                   <label>LUS</label>
+	  //                   <div id="lus_bar" name="lus_bar"></div>
+	  //                 </div>
+	  //                 <input type="hidden" id="lus" name="lus" value="5"/>
+	  //                 <span id="onei_message" style="display:none; color:#F53F4B;">ONE-i 등록시 HTTPS, REGEX, UR, MR, AR, IPS, Reputation이 기본 적용 됩니다</span>
+	  //                 <span id="oned_message" style="display:none; color:#F53F4B;">ONE-d 등록시 LATELIMIT, DDX, IPS, Reputation이 기본 적용 됩니다</span>
+	  //                 <div className="form-group" id="oneInfo" style="display: none">
+	  //                   <label>ONE</label>
+	  //                   <div className="row">
+	  //                   <table className="table">
+	  //                     <tbody>
+	  //                       <tr>
+	  //                         <td><label className="checkbox-inline i-checks"> <input type="checkbox" value="1" id="ips" name="ips" checked="checked"/> ips </label></td>
+	  //                         <td><label className="checkbox-inline i-checks"> <input type="checkbox" value="1" id="dns" name="dns"/> DNS </label></td>
+	  //                         <td><label className="checkbox-inline i-checks"> <input type="checkbox" value="1" id="voip" name="voip"/> VOIP </label></td>
+	  //                         <td><label className="checkbox-inline i-checks"> <input type="checkbox" value="1" id="https" name="https"/> https </label></td>
+	  //                         <td><label className="checkbox-inline i-checks"> <input type="checkbox" value="1" id="snort" name="snort"/> RegEx </label></td>
+	  //                         <td><label className="checkbox-inline i-checks"> <input type="checkbox" value="1" id="qos" name="qos"/> Latelimit </label></td>
+	  //                       </tr>
+	  //                       <tr>
+	  //                         <td><label className="checkbox-inline i-checks"> <input type="checkbox" value="1" id="ddx" name="ddx"/> DDX </label></td>
+	  //                         <td><label className="checkbox-inline i-checks"> <input type="checkbox" value="1" id="dhcp" name="dhcp"/> DHCP </label></td>
+	  //                         <td><label className="checkbox-inline i-checks"> <input type="checkbox" value="1" id="ar" name="ar"/> AR </label></td>
+	  //                         <td><label className="checkbox-inline i-checks"> <input type="checkbox" value="1" id="mr" name="mr"/> MR </label></td>
+	  //                         <td><label className="checkbox-inline i-checks"> <input type="checkbox" value="1" id="ur" name="ur"/> UR </label></td>
+	  //                         <td><label className="checkbox-inline i-checks"> <input type="checkbox" value="1" id="reputation" name="reputation"/> Reputation </label></td>
+	  //                       </tr>
+	  //                     </tbody>
+	  //                   </table>
+	  //                 </div>
+	  //               </div>
+	  //               <div className="hr-line-dashed"></div>
+	  //               <div className="hr-line-dashed"></div>
+	  //                 <div className="row">
+	  //                   <div className="col-sm-6 b-r">
+	  //                     <div className="form-group">
+	  //                       <input type="text" placeholder="고객사" className="form-control" id="co" name="co"/>
+	  //                     </div>
+	  //                     <div className="form-group">
+	  //                       <input type="text" placeholder="영업" className="form-control" id="business" name="business"/>
+	  //                     </div>
+	  //                     <div className="form-group">
+	  //                       <input type="text" placeholder="프로젝트" className="form-control" id="tel" name="tel"/>
+	  //                     </div>
+	  //                   </div>
+	  //                   <div className="col-sm-6">
+	  //                     <div className="form-group">
+	  //                       <input type="text" placeholder="협력사" className="form-control" id="charge" name="charge"/>
+	  //                     </div>
+	  //                     <div className="form-group">
+	  //                       <input type="text" placeholder="장비 S/N" className="form-control" id="admin" name="admin"/>
+	  //                     </div>
+	  //
+	  //                     <div className="form-group">
+	  //                       <input type="text" placeholder="출고구분" className="form-control" id="mail" name="mail"/>
+	  //                     </div>
+	  //                   </div>
+	  //                 </div>
+	  //                 <div className="form-group">
+	  //                   <input type="text" placeholder="메모" className="form-control" id="note2" name="note2"/>
+	  //                 </div>
+	  //                 <span style="color:#F53F4B;">
+	  //                   특수 문자는 ( ) - _  만 허용 합니다.<br/>
+	  //                   모든 공백은 허용 하지 않습니다.
+	  //                 </span>
+	  //               </form>
+	  //             </div>
+	  //             <div className="col-sm-2"><h4>시리얼 등록 하기</h4>
+	  //               <p>On mouse click the Serial can make</p>
+	  //               <p className="text-center">
+	  //                 <a><i className="fa fa-sign-in big-icon" id="btnAddSerial"></i></a>
+	  //               </p>
+	  //             </div>
+	  //           </div>
+	  //         </div>
+	  //       </div>
+	  //     </div>
+	  //   </div>
+	  // </div>
+	  ;
 	};
 
 	BoardForm.propTypes = {
@@ -37005,7 +37999,7 @@
 	exports.default = BoardForm;
 
 /***/ },
-/* 567 */
+/* 569 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -37056,7 +38050,7 @@
 	exports.default = FormInput;
 
 /***/ },
-/* 568 */
+/* 570 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37067,11 +38061,11 @@
 
 	var _redux = __webpack_require__(536);
 
-	var _reducers = __webpack_require__(569);
+	var _reducers = __webpack_require__(571);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
-	var _reduxThunk = __webpack_require__(572);
+	var _reduxThunk = __webpack_require__(574);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
@@ -37089,7 +38083,7 @@
 	exports.default = configStore;
 
 /***/ },
-/* 569 */
+/* 571 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37100,7 +38094,7 @@
 
 	var _redux = __webpack_require__(536);
 
-	var _boardReducer = __webpack_require__(570);
+	var _boardReducer = __webpack_require__(572);
 
 	var _boardReducer2 = _interopRequireDefault(_boardReducer);
 
@@ -37115,7 +38109,7 @@
 	exports.default = rootReducer;
 
 /***/ },
-/* 570 */
+/* 572 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37126,7 +38120,7 @@
 
 	var _actionTypes = __webpack_require__(561);
 
-	var _initState = __webpack_require__(571);
+	var _initState = __webpack_require__(573);
 
 	var _initState2 = _interopRequireDefault(_initState);
 
@@ -37159,7 +38153,7 @@
 	exports.default = boardReducers;
 
 /***/ },
-/* 571 */
+/* 573 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -37172,7 +38166,7 @@
 	};
 
 /***/ },
-/* 572 */
+/* 574 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -37200,16 +38194,16 @@
 	exports['default'] = thunk;
 
 /***/ },
-/* 573 */
+/* 575 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(574);
+	var content = __webpack_require__(576);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(576)(content, {});
+	var update = __webpack_require__(578)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -37226,10 +38220,10 @@
 	}
 
 /***/ },
-/* 574 */
+/* 576 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(575)();
+	exports = module.exports = __webpack_require__(577)();
 	// imports
 
 
@@ -37243,7 +38237,7 @@
 	};
 
 /***/ },
-/* 575 */
+/* 577 */
 /***/ function(module, exports) {
 
 	/*
@@ -37299,7 +38293,7 @@
 
 
 /***/ },
-/* 576 */
+/* 578 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*

@@ -7,7 +7,7 @@ export default class Header extends React.Component {
       <nav>
         <Link to='/main' activeClassName="active">Main</Link>
         {"  /  "}
-        <Link to='/about' activeClassName="active">About</Link>
+        <Link to='/board' activeClassName="active">Board</Link>
         {this.props.children}
       </nav>
     );
